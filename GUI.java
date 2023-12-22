@@ -220,7 +220,7 @@ public class GUI implements ActionListener {
         if(e.getSource() == button){
             for(int i = 0; i < 9; i++){
                 for(int j = 0; j < 9; j++){
-                    if(board[i][j].getText() == ""){
+                    if(board[i][j].getText().equals("")){
                         grid[i][j] = 0;
                     }else if(board[i][j].getText().length() == 1 && board[i][j].getText().charAt(0) >= 49 && board[i][j].getText().charAt(0) <= 57){ 
                         char check = board[i][j].getText().charAt(0);
