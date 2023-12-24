@@ -7,6 +7,7 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
+//Creating interactive GUI
 public class GUI implements ActionListener {
     public static JTextPane[][] board = new JTextPane[9][9];
     public JButton button;
@@ -14,7 +15,7 @@ public class GUI implements ActionListener {
     public GUI() {
         
         JFrame frame = new JFrame();
-
+	//9 x 9 text boxes
         for(int i = 0; i < 9; i++){
             for(int j = 0; j < 9; j++){
                 board[i][j] = new JTextPane();
@@ -28,21 +29,22 @@ public class GUI implements ActionListener {
             }
         }
 
-
+	//Submit button
         button = new JButton("Submit");
         button.setBounds(101, 450, 100, 25);
         button.addActionListener(this);
-        
+
+	//Clear button
         button2 = new JButton("Clear");
         button2.setBounds(280, 450, 100, 25);
         button2.addActionListener(this);
 
+	//adding elements to frame and customizing layout
         JPanel panel = new JPanel();
         panel.setBackground(Color.black);
         panel.setBounds(42, 20, 400, 400);
         panel.setLayout(new GridLayout(9, 9));
         
-
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
         frame.add(panel);
@@ -206,7 +208,7 @@ public class GUI implements ActionListener {
                 numSolutions++;
                 choice = stack.pop();                 
                 choice = choice.nextChoice();         
-                break;
+                break; //Only finds first solution because real Sudoku puzzles only have one solution
             }     
         }
         return numSolutions;
@@ -217,6 +219,8 @@ public class GUI implements ActionListener {
         HashSet<String> set = new HashSet<String>();
         int stop = 0;
         int repeat = 0;
+	    
+	//Submit button clicked
         if(e.getSource() == button){
             for(int i = 0; i < 9; i++){
                 for(int j = 0; j < 9; j++){
@@ -245,6 +249,8 @@ public class GUI implements ActionListener {
                 System.out.println("You entered an invalid value. Only enter numbers from 1 to 9.");
             }
         }
+
+	//Clear button clicked
         if(e.getSource() == button2){
             for(int i = 0; i < 9; i++){
                 for(int j = 0; j < 9; j++){
